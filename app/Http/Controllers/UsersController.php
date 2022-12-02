@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Models\UsersLog;
-use DateTime;
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
@@ -18,6 +17,7 @@ class UsersController extends Controller
             $userLog['first_name'] = $userLog['user']['first_name'];
             $userLog['last_name'] = $userLog['user']['last_name'];
             $userLog['email'] = $userLog['user']['email'];
+            unset($userLog['user']);
         }
         return response()->json($usersLogs);
     }

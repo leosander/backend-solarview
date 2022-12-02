@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use App\Models\UsersLog;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,15 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::create
-        (
-            [
-            'first_name' => 'Usuário',
-            'last_name' => 'Teste',
-            'email' => 'usuario@teste.com.br',
-            'password' => bcrypt( 'senha123' ),
-            ],
-        );
-        
+        User::factory()->count(25)->create();
+        UsersLog::factory(25)->create();
     }
 }
